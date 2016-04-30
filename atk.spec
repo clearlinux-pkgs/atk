@@ -4,7 +4,7 @@
 #
 Name     : atk
 Version  : 2.16.0
-Release  : 5
+Release  : 6
 URL      : http://ftp.acc.umu.se/pub/gnome/sources/atk/2.16/atk-2.16.0.tar.xz
 Source0  : http://ftp.acc.umu.se/pub/gnome/sources/atk/2.16/atk-2.16.0.tar.xz
 Summary  : Accessibility Toolkit
