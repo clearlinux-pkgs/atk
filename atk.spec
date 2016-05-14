@@ -4,16 +4,23 @@
 #
 Name     : atk
 Version  : 2.16.0
-Release  : 6
+Release  : 7
 URL      : http://ftp.acc.umu.se/pub/gnome/sources/atk/2.16/atk-2.16.0.tar.xz
 Source0  : http://ftp.acc.umu.se/pub/gnome/sources/atk/2.16/atk-2.16.0.tar.xz
 Summary  : Accessibility Toolkit
 Group    : Development/Tools
 License  : GPL-2.0 LGPL-2.0
 Requires: atk-lib
+Requires: atk-data
 Requires: atk-doc
 Requires: atk-locales
+BuildRequires : docbook-xml
 BuildRequires : gettext
+BuildRequires : gobject-introspection
+BuildRequires : gobject-introspection-dev
+BuildRequires : gtk-doc
+BuildRequires : gtk-doc-dev
+BuildRequires : libxslt-bin
 BuildRequires : perl(XML::Parser)
 BuildRequires : pkgconfig(glib-2.0)
 
@@ -21,10 +28,20 @@ BuildRequires : pkgconfig(glib-2.0)
 Handy library of accessibility functions. Development libs and headers
 are in atk-devel.
 
+%package data
+Summary: data components for the atk package.
+Group: Data
+
+%description data
+data components for the atk package.
+
+
 %package dev
 Summary: dev components for the atk package.
 Group: Development
 Requires: atk-lib
+Requires: atk-data
+Provides: atk-devel
 
 %description dev
 dev components for the atk package.
@@ -41,6 +58,7 @@ doc components for the atk package.
 %package lib
 Summary: lib components for the atk package.
 Group: Libraries
+Requires: atk-data
 
 %description lib
 lib components for the atk package.
@@ -59,9 +77,12 @@ locales components for the atk package.
 
 %build
 %configure --disable-static
-make V=1 %{?_smp_mflags}
+make V=1  %{?_smp_mflags}
 
 %check
+export http_proxy=http://127.0.0.1:9/
+export https_proxy=http://127.0.0.1:9/
+export no_proxy=localhost
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
@@ -71,6 +92,10 @@ rm -rf %{buildroot}
 
 %files
 %defattr(-,root,root,-)
+
+%files data
+%defattr(-,root,root,-)
+/usr/share/gir-1.0/Atk-1.0.gir
 
 %files dev
 %defattr(-,root,root,-)
@@ -109,6 +134,7 @@ rm -rf %{buildroot}
 /usr/include/atk-1.0/atk/atkversion.h
 /usr/include/atk-1.0/atk/atkwindow.h
 /usr/lib64/*.so
+/usr/lib64/girepository-1.0/Atk-1.0.typelib
 /usr/lib64/pkgconfig/*.pc
 
 %files doc
