@@ -1,3 +1,109 @@
+Changes in version 2.22.0
+==========================
+*
+* Add more options to XGETTEXT_OPTIONS in po/Makevars
+
+Contributors:
+Piotr Drąg (po)
+
+Translations:
+Piotr Drąg (po), David King (en_GB)
+
+Changes in version 2.21.90
+==========================
+*
+* Bug 764883: Add some missing argument (out) annotations
+* Add Language headers to po files
+* MSVC/win32
+   * MSVC Builds: Add a Common Autotools Module for Introspection (Bug 764983)
+   * MSVC Builds: Generate the Introspection Build Commands (Bug 764983)
+   * Clean up atk-introspection-msvc.mak
+   * Visual Studio builds: Include version info in property sheets
+   * Visual Studio builds: Generate atk.pc
+   * Visual Studio 2008 builds: Ensure pc file is generated before "install"
+   * Visual Studio builds: Make .pc generation more flexible
+   * build/win32/pc_base.py: Allow custom options
+   * build/win32/atkpc.py: Fix dependent package string
+
+Contributors:
+Piotr Drąg, Chun-wei Fan, Rico Tzschichholz
+
+Translations:
+GNOME Translation Robot (gd), Cédric Valmary (oc)
+
+Changes in version 2.20.00:
+===========================
+
+Translations:
+Ask Hjorth Larsen (da)
+
+Changes in version 2.19.92:
+===========================
+*
+* Build improvements:
+   * Bug 763212: Fix gettext domain after recent changes
+   * Fix builddir ≠ srcdir in autogen.sh
+   * MSVC builds: Re-arrange include paths
+* Cleaning:
+   * atkregistry: remove code not being compiled
+
+Contributors:
+Chun-wei Fan, Kalev Lember, Alejandro Piñeiro Iglesias, Philip
+Withnall
+
+Translations:
+Anders Jonsson (sv), Cédric Valmary (oc)
+
+Changes in version 2.19.90:
+===========================
+*
+* Bug 755548: atktablecell: use content of the pointer instead of
+  pointer itself
+* Bug 760323: Use upstream gettext intead glib-gettext
+* Build/MSVC/win32 improvements:
+  * Makefile-newvs.am: Update Comments for Usage
+  * Make Makefile.msvcproj A Bit More Generic
+  * Fix build/win32/vs10/atk-install.vcxproj
+
+Contributors:
+Chun-wei Fan, Javier Jardón, Alejandro Piñeiro Iglesias
+
+Translations:
+Aurimas Černius(lt), Trần Ngọc Quân (vi), Kristjan SCHMIDT (eo)
+
+Changes in version 2.18.0:
+===========================
+*
+* Build: Improvements on MSVC Build infrastructure
+
+Contributors:
+Chun-wei Fan
+
+Translations:
+Chao-Hsiung Liao (zh_TW)
+
+Changes in version 2.17.90:
+===========================
+*
+* Documentation:
+  * Replace mentions of 'state-changed' with 'state-change'.
+  * Fixed some tiny typos
+* Build/win32 improvements:
+  * Use Pattern Rules on build/Makefile-newvs.am
+  * Tidying and cleaning .vcxproj.filters generation
+    * Fixes Bug 748176: out-of-tree distcheck fails in build/win32
+  * Removed GCC requirement
+* "install" Projects renamed to "atk-install"
+
+* Misc: set proper file permission to source files
+
+Contributors:
+Murray Cumming, Chun-wei Fan, Simon McVittie, Alejandro Piñeiro
+Iglesias
+
+Translations:
+Pedro Albuquerque (pt), Daniel Martinez (an),
+
 Changes in version 2.16.0:
 ==========================
 *
@@ -8,7 +114,7 @@ Changes in version 2.16.0:
    * "Install" .pdb Files
 
 Contributors:
-Chun-wei Fan  
+Chun-wei Fan
 
 Translations:
 Josef Andersson (sv), Jiri Grönroos (fi), Baurzhan Muftakhidinov (kk),
