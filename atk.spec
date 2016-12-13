@@ -4,14 +4,13 @@
 #
 Name     : atk
 Version  : 2.22.0
-Release  : 8
+Release  : 9
 URL      : http://ftp.acc.umu.se/pub/gnome/sources/atk/2.22/atk-2.22.0.tar.xz
 Source0  : http://ftp.acc.umu.se/pub/gnome/sources/atk/2.22/atk-2.22.0.tar.xz
 Summary  : Accessibility Toolkit, Not Installed
 Group    : Development/Tools
 License  : GPL-2.0 LGPL-2.0
 Requires: atk-lib
-Requires: atk-data
 Requires: atk-doc
 Requires: atk-locales
 BuildRequires : docbook-xml
@@ -28,19 +27,10 @@ BuildRequires : pkgconfig(glib-2.0)
 Handy library of accessibility functions. Development libs and headers
 are in atk-devel.
 
-%package data
-Summary: data components for the atk package.
-Group: Data
-
-%description data
-data components for the atk package.
-
-
 %package dev
 Summary: dev components for the atk package.
 Group: Development
 Requires: atk-lib
-Requires: atk-data
 Provides: atk-devel
 
 %description dev
@@ -58,7 +48,6 @@ doc components for the atk package.
 %package lib
 Summary: lib components for the atk package.
 Group: Libraries
-Requires: atk-data
 
 %description lib
 lib components for the atk package.
@@ -94,10 +83,6 @@ rm -rf %{buildroot}
 
 %files
 %defattr(-,root,root,-)
-
-%files data
-%defattr(-,root,root,-)
-/usr/share/gir-1.0/Atk-1.0.gir
 
 %files dev
 %defattr(-,root,root,-)
@@ -135,9 +120,10 @@ rm -rf %{buildroot}
 /usr/include/atk-1.0/atk/atkvalue.h
 /usr/include/atk-1.0/atk/atkversion.h
 /usr/include/atk-1.0/atk/atkwindow.h
-/usr/lib64/*.so
 /usr/lib64/girepository-1.0/Atk-1.0.typelib
-/usr/lib64/pkgconfig/*.pc
+/usr/lib64/libatk-1.0.so
+/usr/lib64/pkgconfig/atk.pc
+/usr/share/gir-1.0/*.gir
 
 %files doc
 %defattr(-,root,root,-)
@@ -208,7 +194,8 @@ rm -rf %{buildroot}
 
 %files lib
 %defattr(-,root,root,-)
-/usr/lib64/*.so.*
+/usr/lib64/libatk-1.0.so.0
+/usr/lib64/libatk-1.0.so.0.22209.1
 
 %files locales -f atk10.lang 
 %defattr(-,root,root,-)
