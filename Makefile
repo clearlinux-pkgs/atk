@@ -1,5 +1,5 @@
 PKG_NAME := atk
-URL := http://ftp.acc.umu.se/pub/gnome/sources/atk/2.22/atk-2.22.0.tar.xz
+URL := https://download.gnome.org/sources/atk/2.24/atk-2.24.0.tar.xz
 
 
 include ../common/Makefile.common
