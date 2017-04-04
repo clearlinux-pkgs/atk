@@ -4,12 +4,13 @@
 #
 Name     : atk
 Version  : 2.24.0
-Release  : 11
+Release  : 12
 URL      : https://download.gnome.org/sources/atk/2.24/atk-2.24.0.tar.xz
 Source0  : https://download.gnome.org/sources/atk/2.24/atk-2.24.0.tar.xz
 Summary  : Accessibility Toolkit
 Group    : Development/Tools
-License  : GPL-2.0 LGPL-2.0
+License  : LGPL-2.0
+Requires: atk-data
 Requires: atk-lib
 Requires: atk-doc
 Requires: atk-locales
@@ -33,10 +34,19 @@ BuildRequires : pkgconfig(glib-2.0)
 Handy library of accessibility functions. Development libs and headers
 are in atk-devel.
 
+%package data
+Summary: data components for the atk package.
+Group: Data
+
+%description data
+data components for the atk package.
+
+
 %package dev
 Summary: dev components for the atk package.
 Group: Development
 Requires: atk-lib
+Requires: atk-data
 Provides: atk-devel
 
 %description dev
@@ -47,6 +57,7 @@ dev components for the atk package.
 Summary: dev32 components for the atk package.
 Group: Default
 Requires: atk-lib32
+Requires: atk-data
 Requires: atk-dev
 
 %description dev32
@@ -64,6 +75,7 @@ doc components for the atk package.
 %package lib
 Summary: lib components for the atk package.
 Group: Libraries
+Requires: atk-data
 
 %description lib
 lib components for the atk package.
@@ -72,6 +84,7 @@ lib components for the atk package.
 %package lib32
 Summary: lib32 components for the atk package.
 Group: Default
+Requires: atk-data
 
 %description lib32
 lib32 components for the atk package.
@@ -93,7 +106,7 @@ popd
 
 %build
 export LANG=C
-export SOURCE_DATE_EPOCH=1490635673
+export SOURCE_DATE_EPOCH=1491312798
 %configure --disable-static
 make V=1  %{?_smp_mflags}
 
@@ -113,7 +126,7 @@ export no_proxy=localhost
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1490635673
+export SOURCE_DATE_EPOCH=1491312798
 rm -rf %{buildroot}
 pushd ../build32/
 %make_install32
@@ -130,6 +143,11 @@ popd
 %files
 %defattr(-,root,root,-)
 /usr/lib32/girepository-1.0/Atk-1.0.typelib
+
+%files data
+%defattr(-,root,root,-)
+/usr/lib64/girepository-1.0/Atk-1.0.typelib
+/usr/share/gir-1.0/*.gir
 
 %files dev
 %defattr(-,root,root,-)
@@ -167,10 +185,8 @@ popd
 /usr/include/atk-1.0/atk/atkvalue.h
 /usr/include/atk-1.0/atk/atkversion.h
 /usr/include/atk-1.0/atk/atkwindow.h
-/usr/lib64/girepository-1.0/Atk-1.0.typelib
 /usr/lib64/libatk-1.0.so
 /usr/lib64/pkgconfig/atk.pc
-/usr/share/gir-1.0/*.gir
 
 %files dev32
 %defattr(-,root,root,-)
