@@ -4,7 +4,7 @@
 #
 Name     : atk
 Version  : 2.24.0
-Release  : 12
+Release  : 13
 URL      : https://download.gnome.org/sources/atk/2.24/atk-2.24.0.tar.xz
 Source0  : https://download.gnome.org/sources/atk/2.24/atk-2.24.0.tar.xz
 Summary  : Accessibility Toolkit
