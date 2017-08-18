@@ -4,7 +4,7 @@
 #
 Name     : atk
 Version  : 2.24.0
-Release  : 13
+Release  : 14
 URL      : https://download.gnome.org/sources/atk/2.24/atk-2.24.0.tar.xz
 Source0  : https://download.gnome.org/sources/atk/2.24/atk-2.24.0.tar.xz
 Summary  : Accessibility Toolkit
@@ -105,8 +105,11 @@ cp -a atk-2.24.0 build32
 popd
 
 %build
+export http_proxy=http://127.0.0.1:9/
+export https_proxy=http://127.0.0.1:9/
+export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1491312798
+export SOURCE_DATE_EPOCH=1503068884
 %configure --disable-static
 make V=1  %{?_smp_mflags}
 
@@ -122,11 +125,11 @@ popd
 export LANG=C
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
-export no_proxy=localhost
+export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1491312798
+export SOURCE_DATE_EPOCH=1503068884
 rm -rf %{buildroot}
 pushd ../build32/
 %make_install32
