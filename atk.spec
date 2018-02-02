@@ -4,7 +4,7 @@
 #
 Name     : atk
 Version  : 2.26.1
-Release  : 16
+Release  : 17
 URL      : https://download.gnome.org/sources/atk/2.26/atk-2.26.1.tar.xz
 Source0  : https://download.gnome.org/sources/atk/2.26/atk-2.26.1.tar.xz
 Summary  : Accessibility Toolkit
