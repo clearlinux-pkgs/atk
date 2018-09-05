@@ -4,3 +4,4 @@
 #
 gobject-introspection-dev
 gobject-introspection
+glib-dev32
