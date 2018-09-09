@@ -4,7 +4,7 @@
 #
 Name     : atk
 Version  : 2.30.0
-Release  : 22
+Release  : 23
 URL      : https://download.gnome.org/sources/atk/2.30/atk-2.30.0.tar.xz
 Source0  : https://download.gnome.org/sources/atk/2.30/atk-2.30.0.tar.xz
 Summary  : Accessibility Toolkit
@@ -107,7 +107,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1536415006
+export SOURCE_DATE_EPOCH=1536500163
 CFLAGS="$CFLAGS" CXXFLAGS="$CXXFLAGS" LDFLAGS="$LDFLAGS" meson --prefix /usr --buildtype=plain   builddir
 ninja -v -C builddir
 pushd ../build32
