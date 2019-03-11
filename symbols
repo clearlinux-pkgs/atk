@@ -268,6 +268,8 @@ libatk-1.0.so.0:atk_text_get_type
 libatk-1.0.so.0:atk_text_granularity_get_type
 libatk-1.0.so.0:atk_text_range_get_type
 libatk-1.0.so.0:atk_text_remove_selection
+libatk-1.0.so.0:atk_text_scroll_substring_to
+libatk-1.0.so.0:atk_text_scroll_substring_to_point
 libatk-1.0.so.0:atk_text_set_caret_offset
 libatk-1.0.so.0:atk_text_set_selection
 libatk-1.0.so.0:atk_util_get_type
