@@ -101,6 +101,7 @@ libatk-1.0.so.0:atk_object_factory_create_accessible
 libatk-1.0.so.0:atk_object_factory_get_accessible_type
 libatk-1.0.so.0:atk_object_factory_get_type
 libatk-1.0.so.0:atk_object_factory_invalidate
+libatk-1.0.so.0:atk_object_get_accessible_id
 libatk-1.0.so.0:atk_object_get_attributes
 libatk-1.0.so.0:atk_object_get_description
 libatk-1.0.so.0:atk_object_get_index_in_parent
@@ -120,6 +121,7 @@ libatk-1.0.so.0:atk_object_ref_relation_set
 libatk-1.0.so.0:atk_object_ref_state_set
 libatk-1.0.so.0:atk_object_remove_property_change_handler
 libatk-1.0.so.0:atk_object_remove_relationship
+libatk-1.0.so.0:atk_object_set_accessible_id
 libatk-1.0.so.0:atk_object_set_description
 libatk-1.0.so.0:atk_object_set_name
 libatk-1.0.so.0:atk_object_set_parent
