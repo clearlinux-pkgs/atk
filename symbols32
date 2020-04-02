@@ -129,6 +129,7 @@ libatk-1.0.so.0:atk_object_set_role
 libatk-1.0.so.0:atk_plug_get_id
 libatk-1.0.so.0:atk_plug_get_type
 libatk-1.0.so.0:atk_plug_new
+libatk-1.0.so.0:atk_plug_set_child
 libatk-1.0.so.0:atk_range_copy
 libatk-1.0.so.0:atk_range_free
 libatk-1.0.so.0:atk_range_get_description
