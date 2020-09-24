@@ -4,7 +4,7 @@
 #
 Name     : atk
 Version  : 2.36.0
-Release  : 29
+Release  : 30
 URL      : https://download.gnome.org/sources/atk/2.36/atk-2.36.0.tar.xz
 Source0  : https://download.gnome.org/sources/atk/2.36/atk-2.36.0.tar.xz
 Summary  : No detailed summary available
