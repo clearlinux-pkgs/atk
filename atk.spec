@@ -4,7 +4,7 @@
 #
 Name     : atk
 Version  : 2.36.0
-Release  : 30
+Release  : 31
 URL      : https://download.gnome.org/sources/atk/2.36/atk-2.36.0.tar.xz
 Source0  : https://download.gnome.org/sources/atk/2.36/atk-2.36.0.tar.xz
 Summary  : No detailed summary available
@@ -16,12 +16,7 @@ Requires: atk-license = %{version}-%{release}
 Requires: atk-locales = %{version}-%{release}
 BuildRequires : buildreq-gnome
 BuildRequires : buildreq-meson
-BuildRequires : gcc-dev32
-BuildRequires : gcc-libgcc32
-BuildRequires : gcc-libstdc++32
 BuildRequires : glib-dev32
-BuildRequires : glibc-dev32
-BuildRequires : glibc-libc32
 BuildRequires : gobject-introspection
 BuildRequires : gobject-introspection-dev
 
@@ -50,17 +45,6 @@ Requires: atk = %{version}-%{release}
 dev components for the atk package.
 
 
-%package dev32
-Summary: dev32 components for the atk package.
-Group: Default
-Requires: atk-lib32 = %{version}-%{release}
-Requires: atk-data = %{version}-%{release}
-Requires: atk-dev = %{version}-%{release}
-
-%description dev32
-dev32 components for the atk package.
-
-
 %package lib
 Summary: lib components for the atk package.
 Group: Libraries
@@ -69,16 +53,6 @@ Requires: atk-license = %{version}-%{release}
 
 %description lib
 lib components for the atk package.
-
-
-%package lib32
-Summary: lib32 components for the atk package.
-Group: Default
-Requires: atk-data = %{version}-%{release}
-Requires: atk-license = %{version}-%{release}
-
-%description lib32
-lib32 components for the atk package.
 
 
 %package license
@@ -100,35 +74,23 @@ locales components for the atk package.
 %prep
 %setup -q -n atk-2.36.0
 cd %{_builddir}/atk-2.36.0
-pushd ..
-cp -a atk-2.36.0 build32
-popd
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1585860167
+export SOURCE_DATE_EPOCH=1600992120
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
 export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
-export FCFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
-export FFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FCFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
 export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 "
 CFLAGS="$CFLAGS" CXXFLAGS="$CXXFLAGS" LDFLAGS="$LDFLAGS" meson --libdir=lib64 --prefix=/usr --buildtype=plain   builddir
 ninja -v -C builddir
-pushd ../build32/
-export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
-export ASFLAGS="${ASFLAGS}${ASFLAGS:+ }--32"
-export CFLAGS="${CFLAGS}${CFLAGS:+ }-m32 -mstackrealign"
-export CXXFLAGS="${CXXFLAGS}${CXXFLAGS:+ }-m32 -mstackrealign"
-export LDFLAGS="${LDFLAGS}${LDFLAGS:+ }-m32 -mstackrealign"
-meson --libdir=lib32 --prefix=/usr --buildtype=plain   builddir
-ninja -v -C builddir
-popd
 
 %check
 export LANG=C.UTF-8
@@ -136,27 +98,15 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 meson test -C builddir
-cd ../build32;
-meson test -C builddir || :
 
 %install
 mkdir -p %{buildroot}/usr/share/package-licenses/atk
 cp %{_builddir}/atk-2.36.0/COPYING %{buildroot}/usr/share/package-licenses/atk/bf50bac24e7ec325dbb09c6b6c4dcc88a7d79e8f
-pushd ../build32/
-DESTDIR=%{buildroot} ninja -C builddir install
-if [ -d  %{buildroot}/usr/lib32/pkgconfig ]
-then
-pushd %{buildroot}/usr/lib32/pkgconfig
-for i in *.pc ; do ln -s $i 32$i ; done
-popd
-fi
-popd
 DESTDIR=%{buildroot} ninja -C builddir install
 %find_lang atk10
 
 %files
 %defattr(-,root,root,-)
-/usr/lib32/girepository-1.0/Atk-1.0.typelib
 
 %files data
 %defattr(-,root,root,-)
@@ -202,21 +152,10 @@ DESTDIR=%{buildroot} ninja -C builddir install
 /usr/lib64/libatk-1.0.so
 /usr/lib64/pkgconfig/atk.pc
 
-%files dev32
-%defattr(-,root,root,-)
-/usr/lib32/libatk-1.0.so
-/usr/lib32/pkgconfig/32atk.pc
-/usr/lib32/pkgconfig/atk.pc
-
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/libatk-1.0.so.0
 /usr/lib64/libatk-1.0.so.0.23609.1
-
-%files lib32
-%defattr(-,root,root,-)
-/usr/lib32/libatk-1.0.so.0
-/usr/lib32/libatk-1.0.so.0.23609.1
 
 %files license
 %defattr(0644,root,root,0755)
